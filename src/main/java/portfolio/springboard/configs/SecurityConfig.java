@@ -12,7 +12,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http.build();
     }
-    
+
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
         return w->w.ignoring().requestMatchers("/css/**","/js/**","/images/**","/errors/**");

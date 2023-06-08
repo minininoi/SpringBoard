@@ -7,8 +7,8 @@
    - 오라클 driver
    - querydsl 의존성 & 설정 
    - modelMapper
-
-2. 타임리프 설정 
-3. 정적경로 무시, 시큐리티 무력화
+   - Thymeleaf Layout 의존성 
+2. spring security 기본 설정, 정적경로 설정, 임시 메인페이지 추가
+3. 타임리프 설정 
    - 타임리프 기본 레이아웃
-- 스프링 시큐리티 기본 
+
