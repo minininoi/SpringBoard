@@ -3,6 +3,7 @@ package portfolio.springboard.configs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -11,6 +12,7 @@ import portfolio.springboard.configs.interceptors.SiteConfigInterceptor;
 
 @Configuration
 @RequiredArgsConstructor
+@EnableJpaAuditing //이벤트 감지를 위한 활성화
 public class MvcConfig implements WebMvcConfigurer {
     @Value("${file.upload.path}")
     private String fileUploadPath;
