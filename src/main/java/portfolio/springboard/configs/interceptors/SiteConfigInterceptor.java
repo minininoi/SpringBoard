@@ -13,7 +13,7 @@ public class SiteConfigInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        request.setAttribute("cssJsVersion",1);
+        request.setAttribute("cssJsVersion",1);   
        return true;
     }
 
