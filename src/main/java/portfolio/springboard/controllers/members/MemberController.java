@@ -40,4 +40,15 @@ public class MemberController {
         saveService.save(joinForm);
         return "redirect:/member/login";
     }
+    @GetMapping("/login")
+    public String login(){
+
+        return "member/login";
+    }
+
+    @PostMapping("/login")
+    public String loginPs(){
+
+        return "redirect:/member";
+    }
 }
