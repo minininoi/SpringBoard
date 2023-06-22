@@ -16,6 +16,5 @@ public interface MemberRepository extends JpaRepository<Member, Long>, QuerydslP
             QMember member = QMember.member;
 
             return exists(member.userId.eq(userId)); //userId가 일치하는지 확인
-
     }
 }

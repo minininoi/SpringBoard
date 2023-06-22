@@ -1,6 +1,8 @@
 package portfolio.springboard.commons.validators;
 
-//비밀번호 복잡성 세분화 구현
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public interface PasswordValidator {
 
     /**
@@ -11,12 +13,15 @@ public interface PasswordValidator {
      *          true : 대소문자 상관없이 포함되는 패턴
      * @return
      */
-    default boolean alphaCheck(String password, boolean caseIncentive){ //caseIncentive 대소문자 구뷴하지 않음
-
-        if(caseIncentive){
-            return password.matches("[a-zA-Z]+");
+    default boolean alphaCheck(String password, boolean caseIncentive) {
+        if (caseIncentive) { // 대소문자 구분없이 체크
+            Pattern pattern = Pattern.compile("[a-z]+", Pattern.CASE_INSENSITIVE);
+            return pattern.matcher(password).find();
         }
-        return password.matches("[a-z]+") && password.matches("[A-Z]+");
+        //대,소문자 각각 체크
+        Pattern pattern1 = Pattern.compile("[a-z]+");
+        Pattern pattern2 = Pattern.compile("[A-Z]+");
+        return pattern1.matcher(password).find() && pattern2.matcher(password).find();
     }
 
     /**
@@ -24,8 +29,10 @@ public interface PasswordValidator {
      * @param password
      * @return
      */
-    default  boolean numberCheck(String password){
-        return password.matches("\\d");
+    default boolean numberCheck(String password) {
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.find();
     }
 
 
@@ -34,7 +41,9 @@ public interface PasswordValidator {
      * @param password
      * @return
      */
-    default  boolean specialCharCheck(String password){
-        return password.matches("[~!@#$%^&*()-_+=]+");
+    default  boolean specialCharsCheck(String password){
+        Pattern pattern = Pattern.compile("[`~!#$%\\^&\\*()-_+=]+");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.find();
     }
 }
